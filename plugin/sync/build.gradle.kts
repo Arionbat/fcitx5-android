@@ -34,4 +34,11 @@ dependencies {
     implementation(project(":lib:plugin-base"))
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.kotlinx.coroutines)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.documentfile)
 }

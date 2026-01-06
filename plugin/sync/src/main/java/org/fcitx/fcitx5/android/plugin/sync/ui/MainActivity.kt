@@ -6,17 +6,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import org.fcitx.fcitx5.android.plugin.sync.data.LocalRepository
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
 import org.fcitx.fcitx5.android.plugin.sync.data.LocalRepository
 import org.fcitx.fcitx5.android.plugin.sync.databinding.ActivityMainBinding
 import org.fcitx.fcitx5.android.plugin.sync.engine.GistSyncProvider
 import org.fcitx.fcitx5.android.plugin.sync.engine.SyncProvider
 import org.fcitx.fcitx5.android.plugin.sync.engine.WebDavSyncProvider
-import okhttp3.OkHttpClient
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         localRepository = LocalRepository(this)
 
-        setupUI()
         setupUI()
         loadConfig()
         updatePathDisplay()
@@ -110,7 +108,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnSyncUpload.setOnClickListener {
-        binding.btnSyncUpload.setOnClickListener {
             saveConfig()
             binding.tvStatus.text = "Status: Connecting..."
             binding.btnSyncUpload.isEnabled = false
@@ -132,7 +129,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnSyncDownload.setOnClickListener {
         binding.btnSyncDownload.setOnClickListener {
              saveConfig()
              binding.tvStatus.text = "Status: Connecting..."
