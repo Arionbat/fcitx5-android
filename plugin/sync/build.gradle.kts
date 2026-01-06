@@ -15,6 +15,7 @@ android {
     
     defaultConfig {
         applicationId = "org.fcitx.fcitx5.android.plugin.sync"
+        manifestPlaceholders["mainApplicationId"] = "org.fcitx.fcitx5.android"
     }
 
     buildTypes {
