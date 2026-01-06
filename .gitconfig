@@ -1,0 +1,7 @@
+[http]
+        postBuffer = 524288000
+[https]
+        postBuffer = 524288000
+[user]
+        name=arionbat
+        email=haoshuai0913@icloud.com
