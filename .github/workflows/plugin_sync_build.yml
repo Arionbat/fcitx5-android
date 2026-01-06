@@ -1,0 +1,52 @@
+name: Build Sync Plugin
+
+on:
+  push:
+    paths:
+      - 'plugin/sync/**'
+      - '.github/workflows/plugin_sync_build.yml'
+  pull_request:
+    paths:
+      - 'plugin/sync/**'
+      - '.github/workflows/plugin_sync_build.yml'
+  workflow_dispatch:
+
+jobs:
+  build_sync_plugin:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Fetch source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Setup Android environment
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android NDK
+        run: |
+          sdkmanager --install "cmake;3.22.1"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt update
+          sudo apt install extra-cmake-modules gettext
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Build Sync Plugin Release
+        run: ./gradlew :plugin:sync:assembleRelease
+
+      - name: Upload Sync Plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-plugin-release
+          path: plugin/sync/build/outputs/apk/release/*.apk
