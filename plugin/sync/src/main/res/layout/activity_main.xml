@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sync Service"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/serviceTypeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/rbGist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GitHub Gist"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/rbWebDav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WebDAV"
+                android:layout_marginStart="16dp"/>
+        </RadioGroup>
+
+        <!-- WebDAV Config -->
+        <LinearLayout
+            android:id="@+id/webDavConfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etWebDavUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="WebDAV URL (e.g., https://dav.jianguoyun.com/dav/)"
+                android:inputType="textUri"/>
+
+            <EditText
+                android:id="@+id/etWebDavUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:inputType="text"/>
+
+            <EditText
+                android:id="@+id/etWebDavPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"/>
+        </LinearLayout>
+
+        <!-- Gist Config -->
+        <LinearLayout
+            android:id="@+id/gistConfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etGistToken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="GitHub Personal Access Token"
+                android:inputType="text"/>
+            
+            <EditText
+                android:id="@+id/etGistId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Gist ID (Optional, create new if empty)"
+                android:inputType="text"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Local Storage"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnSelectFolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Grant Access to Fcitx5 Data Folder"/>
+
+        <TextView
+            android:id="@+id/tvSelectedPath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No permission granted"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnSelectiveSync"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Configure Selective Sync"
+            android:enabled="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
+
+            <Button
+                android:id="@+id/btnSyncUpload"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Upload to Cloud"/>
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnSyncDownload"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Download from Cloud"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: Idle"
+            android:layout_marginTop="16dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>
