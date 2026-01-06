@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name_debug">Sync (Debug)</string>
     <string name="app_name_release">Sync</string>
+    <string name="description">同步配置</string>
 </resources>
